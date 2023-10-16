@@ -1,0 +1,71 @@
+//Alunos
+//Giulia Leticia de Mesquita Aragão - 121210663
+
+
+main
+association Controle
+---
+---
+---
+
+Controle
+composes Colaborador
+composes Pagina
+---
+- colaboradores: HashMap<email, colaborador>
+- paginas: HashMap<titulo, pagina>
+- atualizacoes: ArrayList<historico>
+---
++ Controle()
++ cadastrarPagina(titulo: str, colaborador: str): void
++ lerPagina(titulo: str): str
++ editarPagina(titulo: str, colaborador: str, conteudo: str): void
++ cadastrarColaborador(nome: str, email: str): void
++ adicionarColaboradorEspecial(titulo: str, colaboradorEsp: str): void
++ listarColaboradores(): str
++ listarHistoricoEdPaginas(): str
++ adicionarTemaPag(titulo:str, tema:str): void
++ listarPagTema(tema: str): str
+---
+
+Colaborador
+association Pagina
+---
+- nome: str
+- email: str
+- contadorEdicao: int
+---
++ Colaborador(nome: str, email:str)
++ getNome(): str
++ getEmail(): str
++ getContadorEdicao(): int
++ adicionaContadorEdicao(): void
++ toString(): str
+---
+
+Pagina
+---
+- titulo: str
+- tema: str
+- conteudo: str
+- colaboradoresEspecial: HashSet<email>
+---
++ Pagina(titulo:str)
++ getTitulo(): str
++ adiconaColaboradorEspecial(email: str): void
++ adicionaConteudo(conteudo: str): void
++ adicionarTema(tema: str): void
++ getConteudo(): str
++ editarConteudo(colaborador: Colaborador, novoConteudo: String): void
+---
+
+Historico
+composes Pagina
+---
+- data: str
+- email: str
+- pagina: pagina
+---
++ Historico(email: str, pagina: pagina)
++ toString(): str
+---

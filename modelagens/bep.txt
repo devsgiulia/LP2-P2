@@ -1,0 +1,46 @@
+//Alunos
+//Pedro Henrique Almeida Costa - 121210175
+//Caíque Calazans Campelo - 121210164
+//Giulia Leticia de Mesquita Aragão - 121210663
+
+---
+RegistroBordados
+association CompraBordado
+---
+- BordadoArray : Bordado[10]
+- CompraArray : Compra[]
++ scanner: Scanner
+---
++ contadorBordadosCadastrados(): int
++ cadastraBordados(index: int, linhas: int, colunas: int): void
++ cadastraCompra(Bordados: str): void
++ atualizarBordado(index: int, tipoPonto: str, linha: int, coluna: int): void
++ imprimirBordado(index: int): str
++ listarBordado(index: int): str
++ alterarTamanhoBordado(index: int, linha: int, coluna: int): void
++ getBordadoinArray(index: int): Bordado
+---
+
+Bordado
+---
+- linhas: int
+- colunas: int
+- pontosBordado: str[][]
+- contadorPontos: int
+---
++ Bordado(index: int, linhas: int, colunas: int)
++ changeLinhaColuna(): void
++ adicionarPonto(tipoPonto: str, linha: int, coluna: int): void
++ getNumeroPontos(): int
++ toString(): str 
+---
+
+CompraBordado
+association Bordado
+---
+- bordados: Bordado[]
+---
++ CadastrarCompra(Bordados: str): void
++ imprimirCompra(): str
++ getValor(Compra: Compra): double
+--- 

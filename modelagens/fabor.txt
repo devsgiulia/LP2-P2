@@ -1,0 +1,126 @@
+//Alunos
+//Giulia Leticia de Mesquita Aragão - 121210663
+
+
+
+Main
+association FaBor
+---
+---
+---
+
+
+FaBor
+composes bordado
+composes robo<Interface>
+---
+- robos: HashMap<String, robo>
+- bordados: HashMap<int, bordado>
+---
++ cadastrarBordado(colunas:int, linhas:int): int
++ cadastraRoboLimpador(nome: str): string
++ cadastraRoboBorda(nome: str): string
++ cadastraRoboRetangulo(nome: str, x1: int, y1: int, x2: int, y2 :int): string
++ cadastraRoboPonto(nome: str): string
++ adicionaRoboLinhaProd(nomeRobo: str, idLinhaProd: int): str
++ listaBordado(idBordado: int): str
++ pegaPeso(): int
++ apagaRobo(nomeRobo: str): void
++ contaProcessoBordado(idBordado: int): int
+---
+
+linhaDeProd
+composes FaBor
+composes robo<Interface>
+---
+- robos: HashSet<String>
+---
++ linhaDeProd()
++ adicionaRobo(nome:str): void
++ processaLinhaProd(idBordado: int): double
++ pesagemRobos(): int
+---
+
+bordado
+---
+- id: int
+- colunas: int
+- linhas: int
+- bordadoMatrix: str[colunas][linhas]
+- versoesPassadasBordado: ArrayList<bordado>
+---
++ bordado(colunas:int, linhas:int)
++ adicionaVersaoPassadas(): void
++ getQuantidadeProcessamento(): int
++ getVersaoPassada(id: int): str
++ getId(): int
++ setBordadoMatrixProcessado(bordado: bordado): void
++ getBordadoMatrix(): str[][]
++ toString(): str
+---
+
+robo<Interface>
+---
+---
++ processarBordados(bordado: bordado): bordado
++ getPeso() : int
++ getCusto(): double
+---
+
+roboLimpador
+implements robo<Interface>
+---
+- nome: str
+- custo: double
+- peso: int
+---
++ roboLimpador(nome: str)
++ processarBordados(bordado: bordado): bordado
++ getPeso() : int
++ getCusto(): double
+---
+
+roboBorda
+implements robo<Interface>
+---
+- nome: str
+- custo: double
+- peso: int
+---
++ roboBorda(nome: str)
++ processarBordados(bordado: bordado): bordado
++ getPeso() : int
++ getCusto(): double
+---
+
+roboRetangulo
+implements robo<Interface>
+---
+- nome: str
+- custo: double
+- peso: int
+- posX1: int
+- posX2: int
+- posY1: int
+- posY2: int
+---
++ roboRetangulo(nome: str,  x1: int, y1: int, x2: int, y2 :int)
++ processarBordados(bordado: bordado): bordado
++ getPeso() : int
++ getCusto(): double
+---
+
+roboPonto
+implements robo<Interface>
+---
+- nome: str
+- custo: double
+- peso: int
+- posX: int
+- posY: int
+---
++ roboPonto(nome: str)
++ processarBordados(bordado: bordado): bordado
++ getPeso() : int
++ getCusto(): double
+---
